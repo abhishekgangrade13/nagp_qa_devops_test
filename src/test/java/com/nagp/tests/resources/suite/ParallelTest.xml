@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+    <listeners>
+        <listener class-name="com.nagp.tests.resources.TestListener"/>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="ParallelTest" parallel="classes" thread-count="2">
+        <classes>
+            <class name="com.nagp.tests.LoginTest"></class>
+            <class name="com.nagp.tests.ProductTest"></class>
+        </classes>
+    </test>
+</suite>

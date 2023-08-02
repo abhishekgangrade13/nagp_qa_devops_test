@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 185.59 s <<< FAILURE! - in TestSuite
+com.nagp.tests.ProductTest.addToCartUsingSearchFunctionality[Push It Messenger Bag, , ](1)  Time elapsed: 7.999 s  <<< FAILURE!
+org.openqa.selenium.ElementClickInterceptedException: 
+element click intercepted: Element <button type="submit" title="Add to Cart" class="action primary tocart" id="product-addtocart-button" disabled="">...</button> is not clickable at point (957, 512). Other element would receive the click: <div class="actions">...</div>
+  (Session info: chrome=112.0.5615.138)
+Build info: version: '4.8.3', revision: 'e5e76298c3'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7d0d4dcab62563844ac18c02ddfa081f, clickElement {id=5c80fc6e-cb61-4967-9a8b-3b89bd2caa00}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 112.0.5615.138, chrome: {chromedriverVersion: 112.0.5615.49 (bd2a7bcb881c..., userDataDir: C:\Users\ABHISH~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:59379}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59379/devtoo..., se:cdpVersion: 112.0.5615.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (7d0d4dcab62563844ac18c02ddfa081f)] -> xpath: //button[@title='Add to Cart']]
+Session ID: 7d0d4dcab62563844ac18c02ddfa081f
+	at com.nagp.tests.ProductTest.addToCartUsingSearchFunctionality(ProductTest.java:62)
+
