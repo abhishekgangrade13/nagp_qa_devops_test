@@ -18,11 +18,13 @@ public class DriverManager {
                 //To establish websocket connection
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--headless");
                 driver = new ChromeDriver(options);
                 break;
             case "firefox":
                 FirefoxOptions options1 = new FirefoxOptions();
                 options1.addArguments("--remote-allow-origins=*");
+                options1.addArguments("--headless");
                 driver = new FirefoxDriver(options1);
                 break;
             case "safari":
@@ -31,6 +33,7 @@ public class DriverManager {
             case "edge":
                 EdgeOptions options3 = new EdgeOptions();
                 options3.addArguments("--remote-allow-origins=*");
+                options3.addArguments("--headless");
                 driver = new EdgeDriver();
                 break;
             default:
