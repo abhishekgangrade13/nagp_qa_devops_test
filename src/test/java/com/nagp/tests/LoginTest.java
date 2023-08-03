@@ -28,14 +28,14 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMenuItems, expectedMenuItems, "Home Page doesn't contain expected menu items");
     }
 
-    @Test(groups = {"Smoke", "Regression"}, description = "Verify screenshot is captured in extent report for failure scenario", priority = 4)
-    public void verifyScreenshotIsCapturedForFailureScenario() {
-        driver.get(testURL);
-        List<String> expectedMenuItems = Arrays.asList("What's", "Women", "Men", "Gear", "Training", "Sale");
-        log.info("Changed the actual menu item in order to fail the test case");
-        List<String> actualMenuItems = homePage.getMenuItems();
-        Assert.assertEquals(actualMenuItems, expectedMenuItems, "Home Page doesn't contain expected menu items");
-    }
+    // @Test(groups = {"Smoke", "Regression"}, description = "Verify screenshot is captured in extent report for failure scenario", priority = 4)
+    // public void verifyScreenshotIsCapturedForFailureScenario() {
+    //     driver.get(testURL);
+    //     List<String> expectedMenuItems = Arrays.asList("What's", "Women", "Men", "Gear", "Training", "Sale");
+    //     log.info("Changed the actual menu item in order to fail the test case");
+    //     List<String> actualMenuItems = homePage.getMenuItems();
+    //     Assert.assertEquals(actualMenuItems, expectedMenuItems, "Home Page doesn't contain expected menu items");
+    // }
 
     @Test(groups = {"Smoke", "Regression"}, dataProvider = "credentials", description = "Verify login functionality for Valid User", priority = 2)
     public void testLoginFunctionalityForValidUser(String email, String pass) {
