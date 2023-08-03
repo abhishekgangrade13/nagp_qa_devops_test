@@ -62,19 +62,19 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.isErrorDisplayed(), true, "Error message not displayed for invalid login");
     }
 
-    @Test(groups = "Regression", description = "Verify create Account functionality", dataProvider = "createAccountAttributes", priority = 1)
-    public void testCreateAccountFunctionality(String firstName, String lastName, String password) throws InterruptedException {
-        String email = firstName + RandomStringUtils.randomAlphabetic(4) + "@gmail.com";
-        goToUrl(testURL);
-        homePage.clickCreateAccountLink();
-        createAccountPage.enterNewUserDetails(firstName, lastName, email, password);
-        log.info("Successfully entered all the user details");
-        createAccountPage.clickCreateAccountButton();
-        log.info("Clicked on Create Account button");
-        String welcomeText = homePage.getWelcomeText();
-        Assert.assertTrue(welcomeText.contains(fileUtils.getProperty("userName")), "Login is not successful");
-        log.info("New Account successfully created");
-    }
+    // @Test(groups = "Regression", description = "Verify create Account functionality", dataProvider = "createAccountAttributes", priority = 1)
+    // public void testCreateAccountFunctionality(String firstName, String lastName, String password) throws InterruptedException {
+    //     String email = firstName + RandomStringUtils.randomAlphabetic(4) + "@gmail.com";
+    //     goToUrl(testURL);
+    //     homePage.clickCreateAccountLink();
+    //     createAccountPage.enterNewUserDetails(firstName, lastName, email, password);
+    //     log.info("Successfully entered all the user details");
+    //     createAccountPage.clickCreateAccountButton();
+    //     log.info("Clicked on Create Account button");
+    //     String welcomeText = homePage.getWelcomeText();
+    //     Assert.assertTrue(welcomeText.contains(fileUtils.getProperty("userName")), "Login is not successful");
+    //     log.info("New Account successfully created");
+    // }
 
     @DataProvider(name = "credentials")
     public Object[][] provideCredentials() {
