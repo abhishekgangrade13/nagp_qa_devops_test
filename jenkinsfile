@@ -1,34 +1,79 @@
-pipeline{
+pipeline {
     agent any
-    environment{
-      notifyEmail = "abhishek.gangrade@nagarro.com"
-    }
-    tools{
-        maven 'maven_home'
-    }
-    triggers{
-      cron('0.06***')
-    }
-    stages{
-        stage("code checkout"){
-            steps{
-                bat "echo checkout"
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code repository
+                checkout scm
             }
         }
-        stage("code build"){
-            steps{
-                bat "mvn clean"
+
+        stage('Build') {
+            steps {
+                // Build your Maven project
+                bat 'mvn clean install'
             }
         }
-        stage("unit test"){
+
+        stage ('Package'){
+            steps {
+                bat 'mvn package'
+            }
+        }
+        stage('SonarQube analysis') {
+                steps{
+                withSonarQubeEnv('nagp_qa_sonarqube_test') {
+                    bat "mvn sonar:sonar"
+                }
+            }
+        }
+        stage ('Server'){
+            steps {
+                rtServer (
+                    id: "Artifactory",
+                    url: 'http://localhost:8082/artifactory',
+                    username: 'admin',
+                    password: 'Ecosmar@2023',
+                    bypassProxy: true,
+                    timeout: 300
+                )
+            }
+        }
+
+        stage('Upload'){
             steps{
-                bat "mvn test -DxmlFileName=src/test/java/com/nagp/tests/resources/suite/LoginTest.xml sonar:sonar"
+                rtUpload (
+                    serverId: "Artifactory" ,
+                    spec: '''{
+                        "files": [
+                            {
+                                "pattern": "*.jar",
+                                "target": "nagp_artifacts-libs-release-local"
+                            }
+                        ]
+                    }''',
+                )
+            }
+        }
+
+        stage ('Publish build info') {
+            steps {
+                rtPublishBuildInfo (
+                    serverId: "Artifactory"
+                )
             }
         }
     }
-    post{
-        success{
-            bat "echo success"
+
+    post {
+        success {
+            // This block will run if the build succeeds
+            echo 'Build succeeded!'
+        }
+        failure {
+            // This block will run if the build fails
+            echo 'Build failed!'
         }
     }
 }
