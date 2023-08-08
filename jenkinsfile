@@ -16,9 +16,9 @@ pipeline {
             }
         }
 
-        stage ('Package'){
+        stage ('Unit Test'){
             steps {
-                bat 'mvn package'
+                bat 'mvn test'
             }
         }
         stage('SonarQube analysis') {
