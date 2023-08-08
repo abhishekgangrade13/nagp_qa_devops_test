@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    environment{
+      notifyEmail = "abhishek.gangrade@nagarro.com"
+    }
+    triggers{
+      cron('0 12 * * * *')
+    }
+
     stages {
         stage('Checkout') {
             steps {
