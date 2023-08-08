@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+    environment{
+      notifyEmail = "abhishek.gangrade@nagarro.com"
+    }
+    tools{
+      maven 'MAVEN_HOME'
+    }
+    triggers{
+      cron('0.06***')
+    }
+    stages{
+        stage("code checkout"){
+            steps{
+                bat "echo checkout"
+            }
+        }
+        stage("code build"){
+            steps{
+                bat "mvn clean"
+            }
+        }
+        stage("unit test"){
+            steps{
+                bat "mvn test -DxmlFileName=src/test/java/com/nagp/tests/resources/suite/LoginTest.xml sonar:sonar"
+            }
+        }
+    }
+    post{
+        success{
+            bat "echo success"
+        }
+    }
+}
