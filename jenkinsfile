@@ -5,7 +5,7 @@ pipeline {
       notifyEmail = "abhishek.gangrade@nagarro.com"
     }
     triggers{
-      cron('0 12 * * * *')
+      cron('0.06***')
     }
 
     stages {
