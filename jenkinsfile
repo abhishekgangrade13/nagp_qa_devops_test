@@ -3,6 +3,9 @@ pipeline{
     environment{
       notifyEmail = "abhishek.gangrade@nagarro.com"
     }
+    tools{
+        maven 'maven_home'
+    }
     triggers{
       cron('0.06***')
     }
