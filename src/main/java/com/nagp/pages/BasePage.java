@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BasePage {
     public static Logger log = LogManager.getLogger(BasePage.class);
-    public WebDriver driver;
+    protected WebDriver driver;
     public WebDriverWait wait;
     FileUtils fileUtil=new FileUtils();
 
