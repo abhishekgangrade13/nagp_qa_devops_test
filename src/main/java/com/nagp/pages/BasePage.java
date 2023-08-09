@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class BasePage {
-    final static Logger log = LogManager.getLogger(BasePage.class);
+    public static Logger log = LogManager.getLogger(BasePage.class);
     public WebDriver driver;
     public WebDriverWait wait;
     FileUtils fileUtil=new FileUtils();
@@ -67,6 +67,7 @@ public class BasePage {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             e.getStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 
