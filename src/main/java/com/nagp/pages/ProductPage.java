@@ -125,7 +125,7 @@ public class ProductPage extends BasePage {
                 myCart.click();
             }
         } catch (TimeoutException | NoSuchElementException e) {
-
+            log.error("element not found");
         }
         waitForVisibility(removeItemButton);
         removeItemButton.click();

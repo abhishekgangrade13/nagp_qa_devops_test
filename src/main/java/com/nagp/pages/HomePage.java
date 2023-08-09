@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
     }
 
     public String getWelcomeText() {
-        wait.until(ExpectedConditions.invisibilityOf(defaultMsg));
+        driverWait.until(ExpectedConditions.invisibilityOf(defaultMsg));
         return welcomeText.getText();
     }
 

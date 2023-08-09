@@ -16,7 +16,7 @@ import java.util.List;
 public class BasePage {
     public static Logger log = LogManager.getLogger(BasePage.class);
     protected WebDriver driver;
-    public WebDriverWait wait;
+    public WebDriverWait driverWait;
     FileUtils fileUtil=new FileUtils();
 
     @FindBy(css = "[alt='Loading...']")
@@ -37,25 +37,25 @@ public class BasePage {
     //Constructor
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(fileUtil.getProperty("globalWait"))));
+        driverWait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(fileUtil.getProperty("globalWait"))));
         PageFactory.initElements(driver, this);
     }
 
     public void waitForVisibility(WebElement webElement) {
-        wait.until(ExpectedConditions.visibilityOf(webElement));
+        driverWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     public void waitForVisibilityOfList(List<WebElement> listOfElements) {
-        wait.until(ExpectedConditions.visibilityOfAllElements(listOfElements));
+        driverWait.until(ExpectedConditions.visibilityOfAllElements(listOfElements));
     }
 
     public void waitForVisibility(WebElement webElement, int time) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(time));
-        wait.until(ExpectedConditions.visibilityOf(webElement));
+        driverWait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        driverWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     public void waitForInvisibility(WebElement webElement) {
-        wait.until(ExpectedConditions.invisibilityOf(webElement));
+        driverWait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 
     public void waitForLoadingIconToDisappear() {
@@ -72,7 +72,7 @@ public class BasePage {
     }
 
     public void waitForElementToBeClickable(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        driverWait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void clickLogout() {

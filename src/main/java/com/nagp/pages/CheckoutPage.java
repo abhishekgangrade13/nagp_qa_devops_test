@@ -43,7 +43,7 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public void selectShippingMethod(String shipMethod, String method) {
+    public void selectShippingMethod(String method) {
         String updatedMethod = method.split(" ")[0].toLowerCase();
         WebElement e = driver.findElement(By.cssSelector(shippingMethod.replace("{method}", updatedMethod)));
         e.click();

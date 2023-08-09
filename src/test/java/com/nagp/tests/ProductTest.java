@@ -107,7 +107,7 @@ public class ProductTest extends BaseTest {
 
             log.info("Entered shipping details");
         }
-        checkoutPage.selectShippingMethod(SHIPPING_METHOD, shippingMethod);
+        checkoutPage.selectShippingMethod(shippingMethod);
         checkoutPage.clickNextButton();
         setWait(5000);
         checkoutPage.clickPlaceOrder();

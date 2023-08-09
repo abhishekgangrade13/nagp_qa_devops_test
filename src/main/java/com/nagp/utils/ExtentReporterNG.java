@@ -2,8 +2,17 @@ package com.nagp.utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class ExtentReporterNG {
+
+    public static Logger log = LogManager.getLogger(ExtentReporterNG.class);
+
+    private ExtentReporterNG() {
+        log.info("This class contains ExtentReporterNG values.");
+    }
+
     public static FileUtils fileUtils = new FileUtils();
     static ExtentReports extent = new ExtentReports();
 

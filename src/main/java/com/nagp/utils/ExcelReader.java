@@ -1,22 +1,24 @@
 package com.nagp.utils;
 
+import com.nagp.pages.BasePage;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 
 public class ExcelReader {
-    private FileInputStream fis;
-    private FileOutputStream fileOut;
+    public static Logger log = LogManager.getLogger(ExcelReader.class);
     private Workbook wb;
     private Sheet sh;
     private Cell cell;
-    private Row row;
-    private String excelFilePath;
+//    private String excelFilePath;
     private Map<String, Integer> columns = new HashMap<>();
 
     public void setExcelFile(String ExcelPath, String SheetName) throws Exception {
@@ -24,17 +26,17 @@ public class ExcelReader {
             File f = new File(ExcelPath);
             wb = WorkbookFactory.create(f);
             sh = wb.getSheet(SheetName);
-            this.excelFilePath = ExcelPath;
+//            this.excelFilePath = ExcelPath;
             //adding all the column header names to the map 'columns'
-            sh.getRow(0).forEach(cell -> {
-                columns.put(cell.getStringCellValue(), cell.getColumnIndex());
+            sh.getRow(0).forEach(excCell -> {
+                columns.put(excCell.getStringCellValue(), excCell.getColumnIndex());
             });
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 
-    public String getCellData(int rownum, int colnum) throws Exception {
+    public String getCellData(int rownum, int colnum) throws IOException {
         try {
             cell = sh.getRow(rownum).getCell(colnum);
             String cellData = null;
@@ -54,6 +56,8 @@ public class ExcelReader {
                     break;
                 case BLANK:
                     cellData = "";
+                    break;
+                default:
                     break;
             }
             return cellData;

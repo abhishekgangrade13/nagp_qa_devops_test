@@ -1,6 +1,15 @@
 package com.nagp.utils;
 
+import com.nagp.pages.BasePage;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 public class Constants {
+    public static Logger log = LogManager.getLogger(Constants.class);
+
+    private Constants() {
+        log.info("This class contains constant values.");
+    }
 
     public static final String FIRST_NAME = "First Name";
     public static final String LAST_NAME = "Last Name";

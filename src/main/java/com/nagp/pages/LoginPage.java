@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
-    WebDriver driver;
     final static Logger log = Logger.getLogger(LoginPage.class);
     @FindBy(id = "email")
     WebElement emailField;
