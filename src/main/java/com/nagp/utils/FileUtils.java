@@ -5,31 +5,31 @@ import java.util.Properties;
 
 public class FileUtils {
 
-    private static final String CONFIG_FILE_PATH = "src/main/java/com/nagp/resources/config.properties";
-
-    private static Properties properties = new Properties();
+    public static Properties properties = new Properties();
 
     public String readFile(String filePath) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            StringBuilder stringBuilder = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line).append(System.lineSeparator());
-            }
-            return stringBuilder.toString();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        String line;
+        StringBuilder stringBuilder = new StringBuilder();
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line).append("\n");
         }
+        reader.close();
+        return stringBuilder.toString();
     }
 
     public String getProperty(String propertyName) {
-        try (FileInputStream fis = new FileInputStream(CONFIG_FILE_PATH)) {
-            properties.load(fis);
-            return properties.getProperty(propertyName);
-        } catch (IOException e) {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\com\\nagp\\resources\\config.properties");
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return null;
         }
+        try {
+            properties.load(fis);
+        } catch (IOException e) {
+            e.getStackTrace();
+        }
+        return properties.getProperty(propertyName);
     }
 }
