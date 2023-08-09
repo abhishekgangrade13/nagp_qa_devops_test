@@ -42,7 +42,7 @@ pipeline {
                     id: "Artifactory",
                     url: 'http://localhost:8082/artifactory',
                     username: 'admin',
-                    password: 'Ecosmar@2023',
+                    password: 'cmVmdGtuOjAxOjE3MjMxMjI1Mzk6bElzajVKNXRRZ0o4dkNSTEk4blMyVElicmlo',
                     bypassProxy: true,
                     timeout: 300
                 )
