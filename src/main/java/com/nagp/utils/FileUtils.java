@@ -2,9 +2,11 @@ package com.nagp.utils;
 
 import java.io.*;
 import java.util.Properties;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class FileUtils {
-
+    final static Logger log = LogManager.getLogger(FileUtils.class);
     private static final String CONFIG_FILE_PATH = "src/main/java/com/nagp/resources/config.properties";
 
     private static Properties properties = new Properties();
