@@ -21,7 +21,7 @@ public class ExcelReader {
 //    private String excelFilePath;
     private Map<String, Integer> columns = new HashMap<>();
 
-    public void setExcelFile(String ExcelPath, String SheetName) throws Exception {
+    public void setExcelFile(String ExcelPath, String SheetName) throws IOException {
         try {
             File f = new File(ExcelPath);
             wb = WorkbookFactory.create(f);
