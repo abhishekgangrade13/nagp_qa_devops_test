@@ -5,7 +5,9 @@ import java.util.Properties;
 
 public class FileUtils {
 
-    public static Properties properties = new Properties();
+    private static final String CONFIG_FILE_PATH = "src/main/java/com/nagp/resources/config.properties";
+
+    private static Properties properties = new Properties();
 
     public String readFile(String filePath) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
