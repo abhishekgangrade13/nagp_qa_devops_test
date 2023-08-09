@@ -115,7 +115,6 @@ public class ProductPage extends BasePage {
             }
         } catch (NoSuchElementException | TimeoutException e) {
             log.error("No items present in the cart");
-            e.printStackTrace();
         }
         return cartList;
     }
