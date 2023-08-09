@@ -5,6 +5,10 @@ pipeline {
       notifyEmail = "abhishek.gangrade@nagarro.com"
     }
 
+    triggers{
+      cron('*/30 * * * *')
+    }
+
     stages {
         stage('Checkout') {
             steps {
