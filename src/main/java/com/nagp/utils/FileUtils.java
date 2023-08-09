@@ -18,6 +18,7 @@ public class FileUtils {
             }
             return stringBuilder.toString();
         } catch (FileNotFoundException e) {
+            log.error("An error occured.");
             return null;
         }
     }
@@ -27,6 +28,7 @@ public class FileUtils {
             properties.load(fis);
             return properties.getProperty(propertyName);
         } catch (IOException e) {
+            log.error("An error occured.");
             return null;
         }
     }
