@@ -13,7 +13,7 @@ public class ExtentReporterNG {
         log.info("This class contains ExtentReporterNG values.");
     }
 
-    public static FileUtils fileUtils = new FileUtils();
+    final static FileUtils fileUtils = new FileUtils();
     static ExtentReports extent = new ExtentReports();
 
     public static ExtentReports extentReportGenerator() {
