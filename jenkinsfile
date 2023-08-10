@@ -40,7 +40,7 @@ pipeline {
             steps {
                 rtMavenDeployer (
                     id: "deployer",
-                    serverID: 'Artifactory',
+                    serverId: 'Artifactory',
                     releaseRepo: 'nagp_artifacts-libs-release-local',
                     snapshotRepo: 'nagp_artifacts-libs-release-local'
                 )
@@ -48,11 +48,11 @@ pipeline {
                 rtMavenRun(
                     pom: 'pom.xml',
                     goals: 'clean install',
-                    deployerID: 'deployer'
+                    deployerId: 'deployer'
                 )
 
                 rtPublishBuildInfo(
-                    serverID: 'Artifactory'
+                    serverId: 'Artifactory',
                 )
             }
         }
