@@ -36,37 +36,23 @@ pipeline {
                 }
             }
         }
-        stage ('Server'){
+        stage ('Publish to Artifactory'){
             steps {
-                rtServer (
-                    id: "Artifactory",
-                    url: 'http://localhost:8082/artifactory',
-                    bypassProxy: true,
-                    timeout: 300
+                rtMavenDeployer (
+                    id: "deployer",
+                    serverID: 'Artifactory',
+                    releaseRepo: 'nagp_artifacts-libs-release-local',
+                    snapshotRepo: 'nagp_artifacts-libs-release-local'
                 )
-            }
-        }
 
-        stage('Upload'){
-            steps{
-                rtUpload (
-                    serverId: "Artifactory" ,
-                    spec: '''{
-                        "files": [
-                            {
-                                "pattern": "*.jar",
-                                "target": "nagp_artifacts-libs-release-local"
-                            }
-                        ]
-                    }''',
+                rtMavenRun(
+                    pom: 'pom.xml',
+                    goals: 'clean install',
+                    deployerID: 'deployer'
                 )
-            }
-        }
 
-        stage ('Publish build info') {
-            steps {
-                rtPublishBuildInfo (
-                    serverId: "Artifactory"
+                rtPublishBuildInfo(
+                    serverID: 'Artifactory'
                 )
             }
         }
