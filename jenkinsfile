@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your Maven project
-                bat 'mvn clean'
+                bat 'mvn clean install'
             }
         }
 
@@ -43,12 +43,6 @@ pipeline {
                     serverId: 'Artifactory',
                     releaseRepo: 'nagp_artifacts-libs-release-local',
                     snapshotRepo: 'nagp_artifacts-libs-release-local'
-                )
-
-                rtMavenRun(
-                    pom: 'pom.xml',
-                    goals: 'clean install',
-                    deployerId: 'deployer'
                 )
 
                 rtPublishBuildInfo(
