@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment{
-      notifyEmail = "abhishek.gangrade@nagarro.com"
-    }
-
     triggers{
       cron('0 18 * * *')
     }
